@@ -37,21 +37,22 @@ class Store {
 
 //Action: 
 const ADD_NAME = 'ADD_NAME'
-const myAction = { type: ADD_NAME, name: "Utkarsh"}
-const myAction2 = { type: ADD_NAME, name: "Kristoff"}
-const myAction3 = { type: ADD_NAME, name: "Sanjay"}
-const myAction4 = { type: ADD_NAME, name: "Leo"}
-const myAction5 = { type: ADD_NAME, name: "Andrew"}
+const addNameAction = (name) => ({
+    type:ADD_NAME,
+    name:name
+})
+
+const myAction = addNameAction("Utkarsh")
+const myAction2 = addNameAction("Kristoff")
+const myAction3 = addNameAction("Sanjay")
+const myAction4 = addNameAction("Rom")
+const myAction5 = addNameAction("Leo")
 
 //Reducer:
 
 const namer = (state = [], action)=>{
-    //console.log("Reducing")
-    //console.log(`The old state is ${state} and action is ${action.type} and ${action.name}` )
     if(action.type === ADD_NAME){
-        //console.log ("inside right action type")
-        //console.log(state.concat([action.name]))
-        return state.concat([action.name])
+       return state.concat([action.name])
     }
 
     return state
@@ -67,4 +68,8 @@ console.log(newStore.getState())
 newStore.dispatcher(myAction2)
 console.log(newStore.getState())
 newStore.dispatcher(myAction3)
+console.log(newStore.getState())
+newStore.dispatcher(myAction4)
+console.log(newStore.getState())
+newStore.dispatcher(myAction5)
 console.log(newStore.getState())
